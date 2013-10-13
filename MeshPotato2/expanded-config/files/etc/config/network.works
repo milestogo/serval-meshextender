@@ -1,0 +1,34 @@
+config 'interface' 'loopback'
+        option 'ifname' 'lo'
+        option 'proto' 'static'
+        option 'ipaddr' '127.0.0.1'
+        option 'netmask' '255.0.0.0'
+
+config 'interface' 'lan'
+        option 'ifname' 'eth0'
+        option 'proto' 'static'
+        option 'ipaddr' '192.168.1.20'
+        option 'netmask' '255.255.255.0'
+
+config 'interface' 'wan'
+        option 'ifname' 'eth1'
+        option 'proto' 'static'
+        option 'ipaddr' '192.168.2.20'
+        option 'netmask' '255.255.255.0'
+
+
+config 'interface' 'public'
+        option 'ifname' 'wlan0'
+        option 'proto' 'static'
+        option 'ipaddr' '192.168.3.1'
+        option 'netmask' '255.255.255.0'
+
+config 'interface' 'mesh'
+        option 'ifname' 'wlan0-1'
+        option 'proto' 'static'
+        option 'ipaddr' '28.168.4.1'
+        option 'netmask' '254.0.0.0'
+
+
+#config 'interface' 'vpn'
+#       option 'ifname' 'edge
