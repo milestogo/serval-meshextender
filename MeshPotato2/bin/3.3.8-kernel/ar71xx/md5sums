@@ -1,0 +1,12 @@
+94780ba58ec676985d178d3b5ffea971 *openwrt-ar71xx-generic-dragino2-kernel.bin
+a6b0c80765596669ec34c0fc8f22de1c *openwrt-ar71xx-generic-dragino2-rootfs-squashfs.bin
+0b7286fc13f83d713129b51c5c8af78a *openwrt-ar71xx-generic-dragino2-squashfs-sysupgrade.bin
+e8b8346fb7ce1c678fb29d3b16a95d58 *openwrt-ar71xx-generic-nbg460n_550n_550nh-u-boot.bin
+b7c79c397d5721d346ad0c7d222cdb42 *openwrt-ar71xx-generic-root.squashfs
+ab6963613e1e3d17dea69dd36b763175 *openwrt-ar71xx-generic-root.squashfs-64k
+381e4219956569f0d312f66acea9eb4d *openwrt-ar71xx-generic-uImage-gzip.bin
+c25f4f1fa1d565ed4af9ba2faf7b0e0f *openwrt-ar71xx-generic-uImage-lzma.bin
+7900e1b7a0a9624cda81357e1e4e2613 *openwrt-ar71xx-generic-vmlinux.bin
+e4928c7628082b6235f3e3d509f51a8b *openwrt-ar71xx-generic-vmlinux.elf
+59ede4a367a002bcc3f20ec026e36fc8 *openwrt-ar71xx-generic-vmlinux.gz
+4741db6fb719ed3455938e40135ff189 *openwrt-ar71xx-generic-vmlinux.lzma
