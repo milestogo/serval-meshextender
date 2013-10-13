@@ -2,6 +2,7 @@ This is a build for running serval on the Mesh Potato2.
 
 This is built from the projects version of mesh-extender for the TPlink3020
 Because the MP2 has so much more flash, everything is built in. Config files too. 
+
 Changes include
 - eth0 is 192.168.1.20
 - serial console left enabled - you'll have to use USB for WAN
@@ -19,7 +20,8 @@ Changes include
 
 Todos:
 - there is a kernel bug that causes 11n to throw out TX errors ( phy0 0x004)
-	Dropping to 11g seems to solve this. Voice is largely unusable. 
+	Dropping to 11g seems to solve this. Voice is largely unusable at 11n. 
+	To work around, edit /etc/config/wireless and change 11gn to 11g. 
 - test & fix firewalls
 - /etc/init.d/fix-ip is a kludge - steal something better from commotion. 
 - switch to commotion network standard of public ip range  based on MAC
@@ -28,14 +30,15 @@ Todos:
 - All packages built in, perhaps serval shouldn't be. 
 
 
-To build your own copy from sourck. 
+To build your own copy from source. 
 -follow the dragino2 build instructions at. 
 	https://github.com/dragino/dragino2
 - cd ms14  / your openwrt root
 - untar the confiles.tgz. This provides 
 	- my openwrt .config
 	- local openwrt config files in ./files
-	- serval feed
+	- serval feed files
+	- a feeds.conf to use the serval feed
 - edit feeds.conf to point servalfeed to the right place
 - then ./scripts/feeds update && ./scripts/feeds/install servald
 - ./scripts/feeds install bridge-utils,mkdosfs,dosfsck, minicom, socat & anything else you want in the .config

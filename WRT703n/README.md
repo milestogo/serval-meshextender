@@ -9,3 +9,5 @@ You will need to format usb sticks somewhere else and then plug in.
 
 All config files are directly copied from the MP2 build, which will cause errors. 
 Serval files are the same version as the MP2 build. 
+
+To build your own, set up the Mesh potato build & drop in the .config file
