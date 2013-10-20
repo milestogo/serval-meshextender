@@ -1,4 +1,4 @@
-This is a build for running serval on the Mesh Potato2. 
+This is a build for running serval on the Mesh Potato2. It replaces the village telco firmware.  
 
 This is built from the projects version of mesh-extender for the TPlink3020
 Because the MP2 has so much more flash, everything is built in. Config files too. 
@@ -10,12 +10,12 @@ Changes include
 - useful scripts like disk formatting  are in /etc/serval/scripts  
 - uses fstab for USB mounting -  if no USB the
 	 local filesstem will be used.  ok for 16M of flash. 
-- firewall ruleset to make it less dangerous to plug into wan
+- firewall ruleset to make it less dangerous to plug MP into a LAN.  
    - firewall almost certainly breaks something important. 
 - /www/serval symlinks to /dos/webroot aka /dev/sda1. 
   - put the most recent android apk there for bootstrapping. 
 - servald is compiled using 3758b038abea00af385fc44ad50156ff7a3daa8a
-	- remember to update the makefile with the latest checkout. 
+	- remember to update the servalfeed/servald/Makefile with the latest git checkout. 
 - kludges for run-fdisk.sh to work better on openwrt.
 
 Todos:
