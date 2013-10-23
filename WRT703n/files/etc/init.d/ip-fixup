@@ -1,6 +1,7 @@
 #!/bin/sh
 ## This is a horrible kludge. Should be part of first boot process, using UCI the right way. 
 # as is, it randomly sets mesh MAC & IP , and hardcodes mac addr for wlan0 to avoid phy0 failures
+# temp files can be removed any day now. 
 
 cd /etc/config
 mkdir -p ./tmp
