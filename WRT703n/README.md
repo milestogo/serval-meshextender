@@ -1,13 +1,13 @@
-This is an attempt to cram everything into 4m of flash. 
-I think it will work, but
+This is an attempt to cram everything into 4m of flash & simplify system setup. 
 
- I HAVE NOT TESTED IT YET. it could brick your device. 
+it works, but is mostly untested. 
+- there are around 700kb free to work with. 
 
 Everything from firewall software to ping was cut out to make it smaller. 
-Left is enough to create wireless networks & attach serial devices. 
-You will need to format usb sticks somewhere else and then plug in. 
+You will need to format usb sticks somewhere else and then plug in.
+  It does have UTF8 and english language VFAT code pages.
 
-All config files are directly copied from the MP2 build, which will cause errors. 
+To build your own. 
+Start with the attitude adjuster trunk of openwrt. copy the  .config file and the files directory. 
 Serval files are the same version as the MP2 build. 
 
-To build your own, set up the Mesh potato build & drop in the .config file

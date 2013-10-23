@@ -12,6 +12,6 @@ MeshPotato2: This is is tested and largely complete, but there is
 WRT703n: This is an attempt to fit serval into 4m of flash without 
 	an external filesystem. By trimming agressively, serval + os
 	fits on flash. In theory one could just add a USB stick to have a 
-	Rhizome node.  I haven't had time to test at all, so be warned. 
+	Rhizome node. 
 
 	
