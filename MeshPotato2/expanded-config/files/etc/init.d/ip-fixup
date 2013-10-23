@@ -1,34 +1,34 @@
 #!/bin/sh
 ## This is a horrible kludge. Should be part of first boot process, using UCI the right way. 
-# Today randomly sets mesh MAC & IP , and hardcodes mac addr for wlan0 to avoid phy0 failures
+# as is, it randomly sets mesh MAC & IP , and hardcodes mac addr for wlan0 to avoid phy0 failures
 
 cd /etc/config
 mkdir -p ./tmp
 
 test=`grep MESHIP ./network`
 if [ "0" = $? ]; then
+
     apE=`dd if=/dev/urandom bs=5 count=1 | hexdump -e '1/1 "%02X" ":" 1/1 "%02X" ":" 1/1 "%02X" ":" 1/1 "%02X" ":" 1/1 "%02X"'`
   meshE=`dd if=/dev/urandom bs=5 count=1 | hexdump -e '1/1 "%02X" ":" 1/1 "%02X" ":" 1/1 "%02X" ":" 1/1 "%02X" ":" 1/1 "%02X"'`
 
 #last 2 of mesh ip is last 2 of mac
-  meship=`echo $meshE  |awk -F: '{ p4=("0x" substr($4,0,2))+0  ;\
-         p5=("0x" substr($5,0,2))+0; ;printf "%d.%d",p4,p5 }' `
-
+  meship=`echo $meshE |awk -F: '{  p3=("0x" substr($3,0,2))+0; p4=("0x" substr($4,0,2))+0  ; p5=("0x" substr($5,0,2))+0; printf "%d.%d.%d",(64+p3%4),p4,p5 }' `
+ 
 # AP IP is last 2 of mac munged to fit 172.16-31
-  apip=`echo $apE  |awk -F: '{ p4=("0x" substr($4,0,2))+0 ;\
-         p5=("0x" substr($5,0,2))+0  ;printf "%d.%d",(16+p4%16),p5 }' `
+  apip=`echo $apE |awk -F: '{ p4=("0x" substr($4,0,2))+0 ; p5=("0x" substr($5,0,2))+0  ;printf "%d.%d",(16+p4%16),p5 }' `
+
   echo $meship $meshE $apE $apip
 
   sed -e s/MESHIP/$meship/g -e s/APIP/$apip/g -e s/MESHETHER/$meshE/g  -e s/APETHER/$apE/g < ./network > ./tmp/network.$$
   cp network ./tmp/network.orig
   mv ./tmp/network.$$ /etc/config/network
- 
+
 fi
 
 # now fix irritating hardware phy0 problem.
 test=`grep MPMAC wireless`
 if [ "0" = $? ]; then
-# should use UCI idiom
+# I'm sure there's a correct openwrt idiom for this  - oh well
   wlanmac=`cat /sys/class/ieee80211/phy0/macaddress`
   sed -e s/MPMAC/$wlanmac/g < ./wireless > ./tmp/wireless.$$ 
   cp wireless ./tmp/wireless.orig
