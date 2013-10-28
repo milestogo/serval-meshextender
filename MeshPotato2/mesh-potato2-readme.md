@@ -22,6 +22,7 @@ Todos:
 - there is a kernel bug that causes 11n to throw out TX errors ( phy0 0x004)
 	Dropping to 11g seems to solve this. Voice is largely unusable at 11n. 
 	To work around, edit /etc/config/wireless and change 11gn to 11g. 
+	https://dev.openwrt.org/ticket/11862 is probably the problem
 - test & fix firewalls
 - /etc/init.d/fix-ip is a kludge - steal something better from commotion. 
 - switch to commotion network standard of public ip range  based on MAC
