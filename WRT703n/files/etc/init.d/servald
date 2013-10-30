@@ -4,20 +4,40 @@
 START=41
 
 start() {
-  # Start servald
-#Would rather do this with hotplug on MP2 
- # mount /dev/sda1 /dos
- # mount /dev/sda2 /serval
- # mount /dev/sda3 /serval-var
-# if mount has failed, we're going to fill up flash eventually
   mkdir -p /serval /serval-var /dos
+  mount /dev/sda1 /dos
 
-  export SERVALINSTANCE_PATH=/etc/serval
-  mkdir -p $SERVALINSTANCE_PATH
-  /etc/serval/runservald &
+  if [ -f /dos/serval/readme.txt ]; then
+        mount /dev/sda2 /serval
+        mount /dev/sda3 /serval-var
+
+  else
+        echo "reformatting usb"
+	umount /dev/sda1 /dos
+        killall runservald
+        export SERVALINSTANCE_PATH=/etc/serval
+        servald stop
+
+        /bin/sh /etc/serval/scripts/run-fdisk.sh
+  fi
+
+
+
+
+  if [ -x /dos/serval/serval.sh ]; then
+        /bin/sh /dos/serval/serval.sh start
+  else
+        export SERVALINSTANCE_PATH=/etc/serval
+        mkdir -p $SERVALINSTANCE_PATH
+        /etc/serval/runservald &
+  fi
 }
 
 stop() {
-  export SERVALINSTANCE_PATH=/etc/serval
-  servald stop
+  if [ -x /dos/serval/serval.sh ]; then
+	/bin/sh /dos/serval/serval.sh stop
+  else 
+	export SERVALINSTANCE_PATH=/etc/serval
+  	servald stop
+  fi
 }
