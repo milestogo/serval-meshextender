@@ -1,1 +1,0 @@
-iw phy phy0 interface add monitor0 type monitor flags none ; ifconfig monitor0 up ; tcpdump -i monitor0 -n
